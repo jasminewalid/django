@@ -1,19 +1,33 @@
-{% extends 'layout/base.html' %}
 {% load static %}
-{% block 'content' %}
-{% for book in books %}
-
-<h1>All Books</h1>
-<div class="card mb-3">
-    <img src="{% static 'bookstore/images/'|add:book.image %}" width="200" height="307.1" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{book.name}} {{book.price}}</h5>
-  
-        <a class="btn btn-info" href="{% url 'bookstore_profile' book.code %}"> Show </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CherryBlossom Bookstore</title>
     
-  </div>
-</div>
-{% endfor %}
-</table>
-
-{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to CherryBlossom Bookstore</h1>
+        <p>We offer a wide selection of books for all ages and interests. Browse our collection and find your next favorite read!</p>
+        
+        
+        <h2>Featured Books</h2>
+        <div class="featured-books">
+            {% for book in books %}
+            <div class="book">
+                <h3>{{ book.name }}</h3>
+                <p>Author: {{ book.author }}</p>
+                <p>Price: ${{ book.price }}</p>
+                <img src="{% static book.image %}" alt="{{ book.name }}">
+            </div>
+            {% endfor %}
+        </div>
+        
+        
+        <a href="{% url 'books_home' %}" class="btn">Browse All Books</a>
+    </div>
+    
+</body>
+</html>

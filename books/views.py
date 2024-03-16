@@ -7,30 +7,25 @@ from .models import Book
     #return "Hello Jasmine!"
     #return HttpResponse ("Hello Jasmine!")
 
-def books_home (request):
-        return render(request,
-                     template_name= "books_home.html",)
+def books_home(request):
+    return render(request, template_name="books_home.html", context={"books": books})
 
 books = [
-    {"id": 1, "name": "Caraval", "price":250,"author":"Stephanie Garber","pages":407, "image": "pic1.png"},
-    {"id": 2, "name": "Legendary", "price":250,"author":"Stephanie Garber","pages":451, "image": "pic2.png"},
-    {"id": 3, "name": "Finale", "price":250,"author":"Stephanie Garber","pages":468, "image": "pic3.png"},
+    {"id": 1, "name": "Caraval", "price": 250, "author": "Stephanie Garber", "pages": 407, "image": "pic1.jpg"},
+    {"id": 2, "name": "Legendary", "price": 250, "author": "Stephanie Garber", "pages": 451, "image": "pic2.jpg"},
+    {"id": 3, "name": "Finale", "price": 250, "author": "Stephanie Garber", "pages": 468, "image": "pic3.jpg"},
 ]
 
+
 def index(request):
-    return HttpResponse(books)
+    return render(request, template_name="index.html", context={"books": books})
 
 def profile(request, id):
-        filtered_books=filter(lambda book:book['id']==id,books)
-        filtered_books=list(filtered_books)
-        if filtered_books:
-                 return render(request, 
-                            template_name='bookStoreHome.html',
-                            context={"book":filtered_books[0]})
-        
-        return HttpResponse("book not found, try again")
-    
+    filtered_books = filter(lambda book: book['id'] == id, books)
+    filtered_books = list(filtered_books)
+    if filtered_books:
+        return render(request, template_name='book_profile.html', context={"book": filtered_books[0]})
+    return HttpResponse("Book not found. Please try again.")
+
 def landing(request):
-        return render (request,
-                     template_name ="landing.html",
-                     context={"books":books})
+    return render(request, template_name="landing.html", context={"books": books})
