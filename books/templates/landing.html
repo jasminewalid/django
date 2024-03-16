@@ -2,32 +2,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to CherryBlossom Bookstore</title>
-    
+  <meta charset="UTF-8">
+  <title>Welcome to CherryBlossom Bookstore</title>
+ 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+  
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+    }
+  
+    .featured-books {
+      display: flex;
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 20px; 
+    }
+  
+    .book {
+      width: 200px;
+      text-align: center; 
+    }
+    .book img {
+      max-width: 100%; 
+      height: auto; 
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to CherryBlossom Bookstore</h1>
-        <p>We offer a wide selection of books for all ages and interests. Browse our collection and find your next favorite read!</p>
-        
-        
-        <h2>Featured Books</h2>
-        <div class="featured-books">
-            {% for book in books %}
-            <div class="book">
-                <h3>{{ book.name }}</h3>
-                <p>Author: {{ book.author }}</p>
-                <p>Price: ${{ book.price }}</p>
-                <img src="{% static book.image %}" alt="{{ book.name }}">
-            </div>
-            {% endfor %}
-        </div>
-        
-        
-        <a href="{% url 'books_home' %}" class="btn">Browse All Books</a>
-    </div>
+  <div class="container">
+    <h1>Welcome to CherryBlossom Bookstore</h1>
+    <p>We offer a wide selection of books for all ages and interests. Browse our collection and find your next favorite read!</p>
     
+    <h2>Featured Books</h2>
+    <div class="featured-books">
+      {% for book in books %}
+      <div class="book">
+        <h3>{{ book.name }}</h3>
+        <p>Author: {{ book.author }}</p>
+        <p>Price: ${{ book.price }}</p>
+        <img src="{% static book.image %}" alt="{{ book.name }}">
+      </div>
+      {% endfor %}
+    </div>
+    <br>
+    <a href="{% url 'books_home' %}" class="btn btn-info">Browse All Books</a>
+  </div>
 </body>
 </html>

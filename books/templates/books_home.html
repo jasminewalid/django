@@ -5,12 +5,32 @@
   <meta charset="UTF-8">
   <title>Books Landing</title>
   
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+ 
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+    }
+    .btn-info {
+      margin-top: 20px; 
+      background-color: #ffb6c1;
+      border-color: #ffb6c1;
+    }
+    
+    .btn-info:hover {
+      background-color: #ff69b4; 
+      border-color: #ff69b4; 
+    }
+  </style>
 </head>
 <body>
-  {% load static %} 
   <div class="container">
     <h1>Welcome to CherryBlossom Bookstore</h1>
-    <img src="{% static 'images/cherryblossom.png' %}" alt="CherryBlossom Bookstore">
+    <img src="{% static 'cherryblossom.png' %}" alt="CherryBlossom Bookstore">
     <a class="btn btn-info" href="{% url 'bookstore_land' %}">Show</a>
   </div>
 </body>
