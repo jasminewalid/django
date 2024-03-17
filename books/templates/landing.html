@@ -46,11 +46,11 @@
         <p>Author: {{ book.author }}</p>
         <p>Price: ${{ book.price }}</p>
         <img src="{% static book.image %}" alt="{{ book.name }}">
+        <a href="{% url 'bookstore_profile' id=book.id %}" class="btn btn-info">Show</a>
+
       </div>
       {% endfor %}
     </div>
-    <br>
-    <a href="{% url 'books_home' %}" class="btn btn-info">Browse All Books</a>
   </div>
 </body>
 </html>

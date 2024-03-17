@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Book
+from books.models import Book
 
 # Create your views here.
 #def hello_jasmine (request):
