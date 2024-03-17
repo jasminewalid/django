@@ -29,3 +29,10 @@ def profile(request, id):
 
 def landing(request):
     return render(request, template_name="landing.html", context={"books": books})
+
+def book_show(request, id):
+    books = Book.objects.get(id=id)
+    return render (request, 'books/show.html', context={"books":books}),
+
+def create_book(request):
+    return render(request,'books/create.html'),
