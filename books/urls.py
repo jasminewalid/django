@@ -6,5 +6,5 @@ urlpatterns = [
     path('', index, name='bookstore_index'),
     path('<int:id>', profile, name='bookstore_profile'),
     path('land/',landing,name="bookstore_land"),
-    path('create', create_book, name='book.create'),
+    path('create/', create_book, name='create_book'),
 ]
