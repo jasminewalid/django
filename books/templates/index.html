@@ -1,28 +1,17 @@
+{% extends 'layout/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookstore</title>
-    <a href="{% url 'students.create' %}" class="btn btn-primary">
-</head>
-<body>
-    <h1>List of Books</h1>
-    <div class="container">
-        
-        {% for book in books %}
-        <div class="book">
-            <h2>{{ book.name }}</h2>
-            <p>Author: {{ book.author }}</p>
-            <p>Price: ${{ book.price }}</p>
-            <p>Pages: {{ book.pages }}</p>
-            
-            <img src="{% static book.image %}" alt="{{ book.name }}">
-        </div>
-        {% endfor %}
+{% block content %}
+<h1>List of Books</h1>
+<div class="container">
+    {% for book in books %}
+    <div class="book">
+        <h2>{{ book.name }}</h2>
+        <p>Author: {{ book.author }}</p>
+        <p>Price: ${{ book.price }}</p>
+        <p>Pages: {{ book.pages }}</p>
+        <img src="{% static book.image %}" alt="{{ book.name }}">
     </div>
-    
-</body>
-</html>
-
+    {% endfor %}
+    <a href="{% url 'create_book' %}">Create</a>
+</div>
+{% endblock %}

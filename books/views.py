@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 from books.models import Book
 from django import forms
@@ -41,11 +41,12 @@ class BookForm(forms.ModelForm):
         fields = ['name', 'author', 'price', 'pages']
 
 def create_book(request):
+    return render(request, 'create.html')
+
+def form_submit(request):
     if request.method == 'POST':
-        form = BookForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('books_home')
+        
+        return HttpResponse('Form submitted successfully!')
     else:
-        form = BookForm()
-    return render(request, 'create.html', {'form': form})
+        
+        return HttpResponse('This view only accepts POST requests.')

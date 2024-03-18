@@ -1,7 +1,7 @@
-{% extends 'layout/base.html' %}
+{% comment %} {% extends 'layout/base.html' %}
 {% load static %}
 
-{% block content %}
+{% block content %} {% endcomment %}
 <form method="post" action="{% url 'form_submit' %}">
     {% csrf_token %}
     <div class="form-group">
@@ -22,5 +22,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-{% endblock %}
+{% comment %} {% endblock %} {% endcomment %}
 

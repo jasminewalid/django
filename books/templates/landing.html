@@ -47,9 +47,10 @@
         <p>Price: ${{ book.price }}</p>
         <img src="{% static book.image %}" alt="{{ book.name }}">
         <a href="{% url 'bookstore_profile' id=book.id %}" class="btn btn-info">Show</a>
-
+      
       </div>
       {% endfor %}
+      <a href="{% url 'create_book' %}"class="btn btn-info" >Create</a>
     </div>
   </div>
 </body>
